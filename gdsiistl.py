@@ -17,50 +17,38 @@ All units, including the units of the exported file, are the GDSII file's
 user units (often microns).
 """
 
-import sys # read command-line arguments
 import gdspy # open gds file
 from stl import mesh # write stl file (python package name is "numpy-stl")
 import numpy as np # fast math on lots of points
 import triangle # triangulate polygons
+import argparse, json # parse args, json
 
-# get the input file name
-if len(sys.argv) < 2: # sys.argv[0] is the name of the program
-    print("Error: need exactly one file as a command line argument.")
-    sys.exit(0)
-gdsii_file_path = sys.argv[1]
+parser = argparse.ArgumentParser(
+    prog="gdsiistl",
+    description="Convert a GDSII 2D layout file to multiple 3D STL files that can be visualised in an external program."
+)
 
-########## CONFIGURATION (EDIT THIS PART) #####################################
+parser.add_argument("gds_path", help="Specify the path to the GDSII file to process")
+parser.add_argument("-l",
+                    "--layers",
+                    metavar="layer_file.json",
+                    help="Specify the path to the JSON file containing the layers to extract. (Default: sky130.json)",
+                    default="sky130.json")
 
-# choose which GDSII layers to use
-layerstack = {
-    # (layernumber, datatype) : (zmin, zmax, 'layername'),
-    
-    (235,4): (0, 0.1, 'substrate'),
+args = parser.parse_args()
+gdsii_file_path = args.gds_path
 
-    (64,20): (0, 0.1, 'nwell'),    
-    (65,44): (0, 0.1, 'tap'),    
-    (65,20): (0, 0.1, 'diff'),    
-    (66,20): (0, 0.1, 'poly'),    
-    (66,44): (0, 0.1, 'licon'),    
-    (67,20): (0, 0.1, 'li1'),    
-    (67,44): (0, 0.1, 'mcon'),    
-    (68,20): (0, 0.1, 'met1'),    
-    (68,44): (0, 0.1, 'via'),    
-    (69,20): (0, 0.1, 'met2'),    
-    (69,44): (0, 0.1, 'via2'),    
-    (70,20): (0, 0.1, 'met3'),    
-    (70,44): (0, 0.1, 'via3'),    
-    (71,20): (0, 0.1, 'met4'),    
-    (71,44): (0, 0.1, 'via4'),    
-    (72,20): (0, 0.1, 'met5'),
-    # (83,44): (0, 0.1, 'text'),
+layers = None
+with open(args.layers) as f:
+    layers = json.load(f)
 
 
-
-}
-
-
-
+## need to convert the json into the same format as the original layerstack dict
+# layerstack =  (layernumber, datatype) : (zmin, zmax, 'layername')
+layerstack = {}
+for layer in layers:
+    #                                                            min pos                     max pos
+    layerstack[(layer["LAYER_NUMBER"], layer["DATA_TYPE"])] = (layer["Z_POSITION"][0], layer["Z_POSITION"][1], layer["LAYER_NAME"])
 
 
 ########## INPUT ##############################################################

@@ -1,0 +1,98 @@
+[
+    {
+        "LAYER_NUMBER": 235,
+        "DATA_TYPE": 4,
+        "LAYER_NAME": "substrate",
+        "Z_POSITION": [-0.5, 0]
+    },
+    {
+        "LAYER_NUMBER": 64,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "nwell",
+        "Z_POSITION": [-0.24, -0.1]
+    },
+    {
+        "LAYER_NUMBER": 65,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "diff",
+        "Z_POSITION": [-0.5, 0.1]
+    },
+    {
+        "LAYER_NUMBER": 66,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "poly",
+        "Z_POSITION": [0, 0.2]
+    },
+    {
+        "LAYER_NUMBER": 66,
+        "DATA_TYPE": 44,
+        "LAYER_NAME": "licon",
+        "Z_POSITION": [0, 0.94]
+    },
+    {
+        "LAYER_NUMBER": 67,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "li1",
+        "Z_POSITION": [0.94, 1.04]
+    },
+    {
+        "LAYER_NUMBER": 67,
+        "DATA_TYPE": 44,
+        "LAYER_NAME": "mcon",
+        "Z_POSITION": [1.04, 1.38]
+    },
+    {
+        "LAYER_NUMBER": 68,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "met1",
+        "Z_POSITION": [1.38, 1.74]
+    },
+    {
+        "LAYER_NUMBER": 68,
+        "DATA_TYPE": 44,
+        "LAYER_NAME": "via",
+        "Z_POSITION": [1.74, 2.01]
+    },
+    {
+        "LAYER_NUMBER": 69,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "met2",
+        "Z_POSITION": [2.01, 2.37]
+    },
+    {
+        "LAYER_NUMBER": 69,
+        "DATA_TYPE": 44,
+        "LAYER_NAME": "via2",
+        "Z_POSITION": [2.37, 2.79]
+    },
+    {
+        "LAYER_NUMBER": 70,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "met3",
+        "Z_POSITION": [2.79, 3.64]
+    },
+    {
+        "LAYER_NUMBER": 70,
+        "DATA_TYPE": 44,
+        "LAYER_NAME": "via3",
+        "Z_POSITION": [3.64, 4.03]
+    },
+    {
+        "LAYER_NUMBER": 71,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "met4",
+        "Z_POSITION": [4.03, 4.88]
+    },
+    {
+        "LAYER_NUMBER": 71,
+        "DATA_TYPE": 44,
+        "LAYER_NAME": "via4",
+        "Z_POSITION": [4.88, 5.38]
+    },
+    {
+        "LAYER_NUMBER": 72,
+        "DATA_TYPE": 20,
+        "LAYER_NAME": "met5",
+        "Z_POSITION": [5.38, 6.65]
+    }
+]
